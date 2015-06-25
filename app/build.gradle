@@ -1,0 +1,81 @@
+apply plugin: 'com.android.application'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.2.3'
+    }
+}
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_6
+        targetCompatibility JavaVersion.VERSION_1_6
+    }
+
+//    lintOptions {
+//        abortOnError false
+//    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+//    productFlavors {
+//
+//        x86 {
+//            ndk {
+//                abiFilter "x86"
+//            }
+//            versionCode = 3
+//        }
+//        armv7 {
+//            ndk {
+//                abiFilter "armeabi-v7a"
+//            }
+//            versionCode = 2
+//        }
+//        small{
+//            versionCode = 1
+//        }
+//        all {
+//            versionCode = 0
+//        }
+//    }
+}
+
+repositories {
+    mavenCentral()
+//    maven {
+//       // url 'https://download.01.org/crosswalk/releases/crosswalk/android/maven2'
+//    }
+//    maven {
+//      //  url '/Users/gillis/.m2/repository/'
+//    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:22.2.+'
+    //compile 'org.xwalk:xwalk_core_library:13.42.319.12'
+    //compile 'org.xwalk:crosswalk:10.39.238.1'
+    //compile project(':crosswalklitewebview')
+    compile project(':xwalk_core_library')
+}
